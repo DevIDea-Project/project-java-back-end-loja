@@ -12,9 +12,9 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - APP_DB_USER=projectloja_application
+      - APP_DB_USER=project_application
       - APP_DB_PASS=qgwuygfuwyegfq6787326tq7236gf
-      - APP_DB_NAME=projectLoja
+      - APP_DB_NAME=project
     volumes:
       - ./db:/docker-entrypoint-initdb.d/
     ports:

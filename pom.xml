@@ -9,21 +9,11 @@
 		<version>2.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.caelum</groupId>
-	<artifactId>carango-bom-api</artifactId>
+	<groupId>br.com.project</groupId>
+	<artifactId>project-tia-marcus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>carango-bom-api</name>
-	<description>API do produto de gerenciamento de concessionárias Carango Bom</description>
-
-	<properties>
-		<java.version>11</java.version>
-		<surefire.skip>false</surefire.skip>
-		<sonar.projectKey>igorlimaaa_carango-bom-api-base</sonar.projectKey>
-		<sonar.organization>igorlimaaa</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.moduleKey>{project.artifactId}:{project.artifactId}</sonar.moduleKey>
-	</properties>
-
+	<name>project-tia-marcus</name>
+	<description>API Projeto Tia de Marcus</description>
 
 	<dependencies>
 		<dependency>
