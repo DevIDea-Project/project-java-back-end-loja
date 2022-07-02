@@ -5,7 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import br.com.project.lojaimplements.form.PerfilForm;
 import br.com.project.lojaimplements.form.UsuarioForm;
+import br.com.project.lojaimplements.service.PerfilService;
 import br.com.project.lojaimplements.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,22 +22,32 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	
+
+	@Autowired
+	private PerfilService perfilService;
+
+
 	@GetMapping()
     @ResponseBody
     @Transactional
     public List<UsuarioForm> lista() {
         return usuarioService.findAllByOrderByNomeBrand();
     }
-	
+
 	@PostMapping()
     @ResponseBody
     @Transactional
     public ResponseEntity<UsuarioForm> cadastraUsuario(@Valid @RequestBody UsuarioForm usuario) throws Exception {
     	return new ResponseEntity<>(usuarioService.saveUsuario(usuario), null, HttpStatus.CREATED);
     }
-	
+
+	@PostMapping("/perfil")
+	@ResponseBody
+	@Transactional
+	public ResponseEntity<PerfilForm> cadastraPerfil(@Valid @RequestBody PerfilForm perfil) throws Exception {
+		return new ResponseEntity<>(perfilService.savePerfil(perfil), null, HttpStatus.CREATED);
+	}
+
 	@DeleteMapping("/{id}")
 	@ResponseBody
 	@Transactional

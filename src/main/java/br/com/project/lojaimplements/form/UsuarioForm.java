@@ -3,6 +3,7 @@ package br.com.project.lojaimplements.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.project.lojaimplements.domain.Perfil;
 import br.com.project.lojaimplements.domain.Usuario;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,7 @@ public class UsuarioForm {
 	private String name;
 	private String email;
 	private String password;
+	private List<Perfil> perfis = new ArrayList<>();
 
 	public Usuario convertDtoToDomain(UsuarioForm usuarioDto) {
 		Usuario usuarioDomain = new Usuario();
@@ -26,6 +28,7 @@ public class UsuarioForm {
 		usuarioDomain.setEmail(usuarioDto.getEmail());
 		usuarioDomain.setNome(usuarioDto.getName());
 		usuarioDomain.setSenha(usuarioDto.getPassword());
+		usuarioDomain.setPerfis(usuarioDto.getPerfis());
 		return usuarioDomain;
 	}
 	
@@ -35,6 +38,7 @@ public class UsuarioForm {
 		usuarioDto.setEmail(usuarioDomain.getEmail());
 		usuarioDto.setName(usuarioDomain.getNome());
 		usuarioDto.setPassword(usuarioDomain.getSenha());
+		usuarioDto.setPerfis(usuarioDomain.getPerfis());
 		return usuarioDto;
 	}
 	
@@ -45,6 +49,7 @@ public class UsuarioForm {
 			user.setId(userDomain.getId())	;
 			user.setName(userDomain.getNome());
 			user.setEmail(userDomain.getEmail());
+			user.setPerfis(userDomain.getPerfis());
 			listDto.add(user);
 		});
 		return listDto;
