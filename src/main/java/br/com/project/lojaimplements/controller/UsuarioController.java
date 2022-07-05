@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import br.com.project.lojaimplements.domain.Usuario;
 import br.com.project.lojaimplements.form.PerfilForm;
 import br.com.project.lojaimplements.form.UsuarioForm;
 import br.com.project.lojaimplements.service.PerfilService;
@@ -46,6 +47,19 @@ public class UsuarioController {
 	@Transactional
 	public ResponseEntity<PerfilForm> cadastraPerfil(@Valid @RequestBody PerfilForm perfil) throws Exception {
 		return new ResponseEntity<>(perfilService.savePerfil(perfil), null, HttpStatus.CREATED);
+	}
+
+	@GetMapping("/{id}")
+	@ResponseBody
+	@Transactional
+	@Validated
+	public ResponseEntity<Usuario> listById(@PathVariable Long id) {
+		Usuario usuarioId = usuarioService.findByIdUsuario(id);
+		if (usuarioId != null) {
+			return new ResponseEntity<>(usuarioId, null, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(usuarioId, null, HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@DeleteMapping("/{id}")

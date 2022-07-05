@@ -22,8 +22,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	@PreAuthorize("hasPerfil('ADMIN')")
-    @GetMapping()
+	@GetMapping()
     @ResponseBody
     public ResponseEntity<List<ProductForm>> list() {
         return new ResponseEntity<>(productService.findAllByOrderByNomeProduct(), null, HttpStatus.OK);

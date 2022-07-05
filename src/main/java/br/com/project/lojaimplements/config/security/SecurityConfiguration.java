@@ -43,10 +43,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers(HttpMethod.GET, "/usuario").permitAll()
-			.antMatchers(HttpMethod.POST, "/usuario").permitAll()
 			.antMatchers(HttpMethod.POST, "/auth").permitAll()
-			.antMatchers(HttpMethod.POST, "/usuario/perfil").permitAll()
+
+			.antMatchers(HttpMethod.POST, "/usuario/perfil").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.POST, "/usuario").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.GET, "/usuario").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.GET, "/usuario/*").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/usuario/*").hasAnyAuthority("ADMIN")
+
+			.antMatchers(HttpMethod.POST, "/product").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.PUT, "/product/*").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/product/*").hasAnyAuthority("ADMIN")
+
+
 			
 			.anyRequest().authenticated()
 			.and().cors().and().csrf().disable()
