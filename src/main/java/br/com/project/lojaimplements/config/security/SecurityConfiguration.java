@@ -54,8 +54,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.PUT, "/product/*").hasAnyAuthority("ADMIN")
 			.antMatchers(HttpMethod.DELETE, "/product/*").hasAnyAuthority("ADMIN")
 
-
-			
 			.anyRequest().authenticated()
 			.and().cors().and().csrf().disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
