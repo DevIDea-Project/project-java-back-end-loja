@@ -20,7 +20,8 @@ services:
     ports:
       - 5432:5432
   api:
-    image: project-java-back-end-loja:project-api
+    container_name: project-java-back-end-loja
+    image: 404546/projeto-loja:latest
     environment:
       DB_HOST: db
     ports:
