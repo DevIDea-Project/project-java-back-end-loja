@@ -33,7 +33,6 @@ public class AuthControllerTest {
         login.setPassword("123456");
 
         ResponseEntity<TokenForm> token = authController.authentication(login);
-
         assertEquals(HttpStatus.BAD_REQUEST, token.getStatusCode());
 
     }
