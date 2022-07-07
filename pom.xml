@@ -20,6 +20,7 @@
 		<java.version>11</java.version>
 		<surefire.skip>false</surefire.skip>
 		<sonar.organization>devidea-project</sonar.organization>
+		<sonar.projectKey>project_loja-ireland</sonar.projectKey>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.moduleKey>{project.artifactId}:{project.artifactId}</sonar.moduleKey>
 	</properties>
