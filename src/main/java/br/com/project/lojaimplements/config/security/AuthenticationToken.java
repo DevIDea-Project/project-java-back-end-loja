@@ -41,7 +41,6 @@ public class AuthenticationToken extends OncePerRequestFilter{
 			authenClient(token);
 		}
 		
-		
 		filterChain.doFilter(request, response);
 		
 	}
