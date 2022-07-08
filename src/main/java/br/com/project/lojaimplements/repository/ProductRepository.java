@@ -14,6 +14,4 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 	
 	public List<Product> findAllByOrderByNomeAsc();
-
-	public Optional<Product> findByIdProduct(Long id);
 }

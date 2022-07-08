@@ -53,7 +53,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductForm findByIdProduct(Long id) {
-		Optional<Product> m1 = productRepository.findByIdProduct(id);
+		Optional<Product> m1 = productRepository.findById(id);
 		if (m1.isPresent()) {
 			return productForm.convertDomainToType(m1.get());
 		} else {

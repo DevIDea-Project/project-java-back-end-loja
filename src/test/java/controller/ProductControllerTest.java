@@ -59,13 +59,13 @@ public class ProductControllerTest {
 
     @Test
     void deveRetornarProductPeloId() {
-        ResponseEntity<Product> resposta = productController.id(1L);
+        ResponseEntity<ProductForm> resposta = productController.id(1L);
         assertEquals(HttpStatus.OK, resposta.getStatusCode());
     }
 
     @Test
     void deveRetornarNotFoundQuandoRecuperarProductComIdInexistente() {
-        ResponseEntity<Product> resposta = productController.id(1000L);
+        ResponseEntity<ProductForm> resposta = productController.id(1000L);
         assertEquals(HttpStatus.NOT_FOUND, resposta.getStatusCode());
     }
 

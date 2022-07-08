@@ -39,12 +39,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public UsuarioForm findByIdUsuario(Long id) {
-		Optional<Usuario> m1 = usuarioRepository.findByIdUser(id);
-		if (m1.isPresent()) {
-			return usuarioForm.convertDomainToDto((m1.get()));
-		} else {
-			return null;
-		}
+		Optional<Usuario> m1 = usuarioRepository.findById(id);
+		return m1.map(usuario -> usuarioForm.convertDomainToDto((usuario))).orElse(null);
 	}
 
 	@Override
