@@ -1,14 +1,14 @@
 package br.com.project.lojaimplements.impl;
 
-import java.util.List;
-import java.util.Optional;
-
 import br.com.project.lojaimplements.domain.Product;
 import br.com.project.lojaimplements.form.ProductForm;
 import br.com.project.lojaimplements.repository.ProductRepository;
 import br.com.project.lojaimplements.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -52,10 +52,10 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product findByIdProduct(Long id) {
+	public ProductForm findByIdProduct(Long id) {
 		Optional<Product> m1 = productRepository.findById(id);
 		if (m1.isPresent()) {
-			return m1.get();
+			return productForm.convertDomainToType(m1.get());
 		} else {
 			return null;
 		}
