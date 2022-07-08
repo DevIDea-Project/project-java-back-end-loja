@@ -1,11 +1,5 @@
 package br.com.project.lojaimplements.controller;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-import javax.validation.Valid;
-
-import br.com.project.lojaimplements.domain.Usuario;
 import br.com.project.lojaimplements.form.PerfilForm;
 import br.com.project.lojaimplements.form.UsuarioForm;
 import br.com.project.lojaimplements.service.PerfilService;
@@ -16,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("usuario")
@@ -53,8 +51,8 @@ public class UsuarioController {
 	@ResponseBody
 	@Transactional
 	@Validated
-	public ResponseEntity<Usuario> listById(@PathVariable Long id) {
-		Usuario usuarioId = usuarioService.findByIdUsuario(id);
+	public ResponseEntity<UsuarioForm> listById(@PathVariable Long id) {
+		UsuarioForm usuarioId = usuarioService.findByIdUsuario(id);
 		if (usuarioId != null) {
 			return new ResponseEntity<>(usuarioId, null, HttpStatus.OK);
 		}else {

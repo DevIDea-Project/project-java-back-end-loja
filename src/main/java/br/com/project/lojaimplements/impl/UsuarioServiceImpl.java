@@ -1,9 +1,5 @@
 package br.com.project.lojaimplements.impl;
 
-import java.util.List;
-import java.util.Optional;
-
-import br.com.project.lojaimplements.domain.Product;
 import br.com.project.lojaimplements.domain.Usuario;
 import br.com.project.lojaimplements.form.UsuarioForm;
 import br.com.project.lojaimplements.repository.UsuarioRepository;
@@ -11,6 +7,9 @@ import br.com.project.lojaimplements.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -39,10 +38,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public Usuario findByIdUsuario(Long id) {
-		Optional<Usuario> m1 = usuarioRepository.findById(id);
+	public UsuarioForm findByIdUsuario(Long id) {
+		Optional<Usuario> m1 = usuarioRepository.findByIdUser(id);
 		if (m1.isPresent()) {
-			return m1.get();
+			return usuarioForm.convertDomainToDto((m1.get()));
 		} else {
 			return null;
 		}

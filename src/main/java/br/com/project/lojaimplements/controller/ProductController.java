@@ -1,19 +1,16 @@
 package br.com.project.lojaimplements.controller;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import br.com.project.lojaimplements.domain.Product;
 import br.com.project.lojaimplements.form.ProductForm;
 import br.com.project.lojaimplements.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller()
 @RequestMapping("product")
@@ -31,8 +28,8 @@ public class ProductController {
     @GetMapping("/{id}")
     @ResponseBody
     @Transactional
-    public ResponseEntity<Product> id(@PathVariable Long id){
-    	Product product = productService.findByIdProduct(id);
+    public ResponseEntity<ProductForm> id(@PathVariable Long id){
+		ProductForm product = productService.findByIdProduct(id);
     	if(product != null) {
     		return new ResponseEntity<>(product, null, HttpStatus.OK);
     	}else {
