@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
@@ -21,19 +22,13 @@ import lombok.Setter;
 public class ProductForm {
 
 	private Long id;
-	
 	@NotBlank
 	private String nome;
-
 	private Integer quantityProduct;
-
 	@NotBlank
 	private String Description;
-
 	private Date createDate;
-
 	private Date modifyDate;
-
 	private Float priceProduct;
 
 
