@@ -28,10 +28,23 @@ public class Product {
 	@Size(min = 2, message = "Deve ter {min} ou mais caracteres.")
 	private String nome;
 
-	private Integer quantityProduct;
+	@NotBlank
+	@Size(min = 2, message = "Deve ter {min} ou mais caracteres.")
+	private String medida;
 
 	@NotBlank
-	private String description;
+	@Size(min = 2, message = "Deve ter {min} ou mais caracteres.")
+	private String etiqueta;
+
+	@NotBlank
+	@Size(min = 2, message = "Deve ter {min} ou mais caracteres.")
+	private String categoria;
+
+	private Float inQuantityItem;
+
+	private Float outQuantityItem;
+
+	private Float totalResult;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
@@ -43,11 +56,7 @@ public class Product {
 	@Column(name = "modify_date")
 	private Date modifyDate;
 
-	private Float priceProduct;
-
-	public Product() {
-
-	}
+	public Product() {}
 
 	public Product(String nome) {
 		this(null, nome);

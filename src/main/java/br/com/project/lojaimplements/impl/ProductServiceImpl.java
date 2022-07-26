@@ -7,7 +7,6 @@ import br.com.project.lojaimplements.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,12 +38,12 @@ public class ProductServiceImpl implements ProductService {
 
 		Optional<Product> productDomain = productRepository.findById(id);
 		if (productDomain.isPresent()) {
+
 			Product productSave = productDomain.get();
-			productSave.setNome(productForm.getNome());
-			productSave.setQuantityProduct(productForm.getQuantityProduct());
-			productSave.setDescription(productForm.getDescription());
+			Float results = ((productForm.getTotalResult() - productForm.getOutQuantityItem()));
+			productSave.setTotalResult(results);
 			productSave.setModifyDate(productForm.getModifyDate());
-			productSave.setPriceProduct(productForm.getPriceProduct());
+
 			return productForm.convertDomainToType(productRepository.saveAndFlush(productSave));
 		} else {
 			return null;

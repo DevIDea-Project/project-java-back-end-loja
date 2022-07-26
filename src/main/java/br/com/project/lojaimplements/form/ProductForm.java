@@ -1,16 +1,11 @@
 package br.com.project.lojaimplements.form;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 import br.com.project.lojaimplements.domain.Product;
-import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
@@ -21,16 +16,21 @@ import lombok.Setter;
 @Setter
 public class ProductForm {
 
+
 	private Long id;
 	@NotBlank
 	private String nome;
-	private Integer quantityProduct;
 	@NotBlank
-	private String Description;
+	private String medida;
+	@NotBlank
+	private String etiqueta;
+	@NotBlank
+	private String categoria = "";
+	private Float inQuantityItem;
+	private Float outQuantityItem;
+	private Float totalResult;
 	private Date createDate;
 	private Date modifyDate;
-	private Float priceProduct;
-
 
 	public List<ProductForm> convertDomainToDto(List<Product> marca) {
 		List<ProductForm> listaType = new ArrayList<>();
@@ -42,11 +42,16 @@ public class ProductForm {
 		Product productDomain = new Product();
 		productDomain.setId(null);
 		productDomain.setNome(productType.getNome());
-		productDomain.setQuantityProduct(productType.getQuantityProduct());
-		productDomain.setDescription(productType.getDescription());
+		productDomain.setMedida(productType.getMedida());
+		productDomain.setEtiqueta(productType.getEtiqueta());
+		productDomain.setCategoria(productType.getCategoria());
+		productDomain.setInQuantityItem(productType.getInQuantityItem());
+		productDomain.setOutQuantityItem(productType.getOutQuantityItem());
+		Float result = (productType.getInQuantityItem()) - (productType.getOutQuantityItem());
+		productDomain.setTotalResult(result);
 		productDomain.setCreateDate(productType.getCreateDate());
 		productDomain.setModifyDate(productType.getModifyDate());
-		productDomain.setPriceProduct(productType.getPriceProduct());
+
 		return productDomain;
 	}
 
@@ -54,11 +59,14 @@ public class ProductForm {
 		ProductForm productType = new ProductForm();
 		productType.setId(productDomain.getId());
 		productType.setNome(productDomain.getNome());
-		productType.setQuantityProduct(productDomain.getQuantityProduct());
-		productType.setDescription(productDomain.getDescription());
+		productType.setMedida(productDomain.getMedida());
+		productType.setEtiqueta(productDomain.getEtiqueta());
+		productType.setCategoria(productDomain.getCategoria());
+		productType.setInQuantityItem(productDomain.getInQuantityItem());
+		productType.setOutQuantityItem(productDomain.getOutQuantityItem());
+		productType.setTotalResult(productDomain.getTotalResult());
 		productType.setCreateDate(productDomain.getCreateDate());
 		productType.setModifyDate(productDomain.getModifyDate());
-		productType.setPriceProduct(productDomain.getPriceProduct());
 		return productType;
 	}
 
