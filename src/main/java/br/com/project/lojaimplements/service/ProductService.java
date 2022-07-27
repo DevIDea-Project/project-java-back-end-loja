@@ -12,6 +12,9 @@ public interface ProductService {
     
     public ProductForm updateProduct(Long id, ProductForm productForm);
 
+
+    public ProductForm updateProductQuantity(Long id, ProductForm productForm);
+
     public ProductForm saveProduct(ProductForm productForm);
 
     public ProductForm findByIdProduct(Long id);

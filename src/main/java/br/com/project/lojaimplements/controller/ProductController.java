@@ -55,6 +55,17 @@ public class ProductController {
     	}
     }
 
+	@PutMapping("/adding/{id}")
+	@ResponseBody
+	public ResponseEntity<ProductForm> productAddingQuantity(@PathVariable Long id, @Valid @RequestBody ProductForm productForm){
+		ProductForm product = productService.updateProductQuantity(id, productForm);
+		if(product != null) {
+			return new ResponseEntity<>(product, null, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(product, null, HttpStatus.NOT_FOUND);
+		}
+	}
+
 	@DeleteMapping("/{id}")
 	@ResponseBody
 	public ResponseEntity<ProductForm> delete(@PathVariable Long id) throws Exception  {
