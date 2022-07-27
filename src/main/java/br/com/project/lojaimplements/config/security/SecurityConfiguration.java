@@ -53,6 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/product").hasAnyAuthority("ADMIN")
 			.antMatchers(HttpMethod.PUT, "/product/*").hasAnyAuthority("ADMIN")
 			.antMatchers(HttpMethod.DELETE, "/product/*").hasAnyAuthority("ADMIN")
+			.antMatchers(HttpMethod.DELETE, "/product/adding/*").hasAnyAuthority("ADMIN")
 
 			.anyRequest().authenticated()
 			.and().cors().and().csrf().disable()

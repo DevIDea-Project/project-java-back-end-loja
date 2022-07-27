@@ -47,8 +47,7 @@ public class ProductForm {
 		productDomain.setCategoria(productType.getCategoria());
 		productDomain.setInQuantityItem(productType.getInQuantityItem());
 		productDomain.setOutQuantityItem(productType.getOutQuantityItem());
-		Float result = (productType.getInQuantityItem()) - (productType.getOutQuantityItem());
-		productDomain.setTotalResult(result);
+		productDomain.setTotalResult(productType.getInQuantityItem());
 		productDomain.setCreateDate(productType.getCreateDate());
 		productDomain.setModifyDate(productType.getModifyDate());
 

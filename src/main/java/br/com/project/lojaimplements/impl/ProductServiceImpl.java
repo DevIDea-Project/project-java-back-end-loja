@@ -40,7 +40,35 @@ public class ProductServiceImpl implements ProductService {
 		if (productDomain.isPresent()) {
 
 			Product productSave = productDomain.get();
+			productSave.setNome(productForm.getNome());
+			productSave.setMedida(productForm.getMedida());
+			productSave.setEtiqueta(productForm.getEtiqueta());
+			productSave.setCategoria(productForm.getCategoria());
+			productSave.setInQuantityItem(productForm.getInQuantityItem());
+			productSave.setOutQuantityItem(productForm.getOutQuantityItem());
 			Float results = ((productForm.getTotalResult() - productForm.getOutQuantityItem()));
+			productSave.setTotalResult(results);
+			productSave.setModifyDate(productForm.getModifyDate());
+
+			return productForm.convertDomainToType(productRepository.saveAndFlush(productSave));
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public ProductForm updateProductQuantity(Long id, ProductForm productForm) {
+		Optional<Product> productDomain = productRepository.findById(id);
+		if (productDomain.isPresent()) {
+
+			Product productSave = productDomain.get();
+			productSave.setNome(productForm.getNome());
+			productSave.setMedida(productForm.getMedida());
+			productSave.setEtiqueta(productForm.getEtiqueta());
+			productSave.setCategoria(productForm.getCategoria());
+			productSave.setInQuantityItem(productForm.getInQuantityItem());
+			productSave.setOutQuantityItem(productForm.getOutQuantityItem());
+			Float results = ((productForm.getTotalResult() + productForm.getInQuantityItem()));
 			productSave.setTotalResult(results);
 			productSave.setModifyDate(productForm.getModifyDate());
 
