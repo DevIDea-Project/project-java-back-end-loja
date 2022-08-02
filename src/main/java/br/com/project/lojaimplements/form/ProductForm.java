@@ -28,6 +28,7 @@ public class ProductForm {
 	private String categoria = "";
 	private Float inQuantityItem;
 	private Float outQuantityItem;
+	private Integer quantidadeEstoque;
 	private Float totalResult;
 	private Date createDate;
 	private Date modifyDate;
@@ -47,6 +48,7 @@ public class ProductForm {
 		productDomain.setCategoria(productType.getCategoria());
 		productDomain.setInQuantityItem(productType.getInQuantityItem());
 		productDomain.setOutQuantityItem(productType.getOutQuantityItem());
+		productDomain.setQuantidadeEstoque(productType.getQuantidadeEstoque());
 		productDomain.setTotalResult(productType.getInQuantityItem());
 		productDomain.setCreateDate(productType.getCreateDate());
 		productDomain.setModifyDate(productType.getModifyDate());
@@ -63,6 +65,7 @@ public class ProductForm {
 		productType.setCategoria(productDomain.getCategoria());
 		productType.setInQuantityItem(productDomain.getInQuantityItem());
 		productType.setOutQuantityItem(productDomain.getOutQuantityItem());
+		productType.setQuantidadeEstoque(productDomain.getQuantidadeEstoque());
 		productType.setTotalResult(productDomain.getTotalResult());
 		productType.setCreateDate(productDomain.getCreateDate());
 		productType.setModifyDate(productDomain.getModifyDate());

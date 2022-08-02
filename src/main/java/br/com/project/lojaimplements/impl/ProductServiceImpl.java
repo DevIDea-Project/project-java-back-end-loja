@@ -46,6 +46,7 @@ public class ProductServiceImpl implements ProductService {
 			productSave.setCategoria(productForm.getCategoria());
 			productSave.setInQuantityItem(productForm.getInQuantityItem());
 			productSave.setOutQuantityItem(productForm.getOutQuantityItem());
+			productSave.setQuantidadeEstoque(productForm.getQuantidadeEstoque());
 			Float results = ((productForm.getTotalResult() - productForm.getOutQuantityItem()));
 			productSave.setTotalResult(results);
 			productSave.setModifyDate(productForm.getModifyDate());
@@ -68,6 +69,7 @@ public class ProductServiceImpl implements ProductService {
 			productSave.setCategoria(productForm.getCategoria());
 			productSave.setInQuantityItem(productForm.getInQuantityItem());
 			productSave.setOutQuantityItem(productForm.getOutQuantityItem());
+			productSave.setQuantidadeEstoque(productForm.getQuantidadeEstoque());
 			Float results = ((productForm.getTotalResult() + productForm.getInQuantityItem()));
 			productSave.setTotalResult(results);
 			productSave.setModifyDate(productForm.getModifyDate());
