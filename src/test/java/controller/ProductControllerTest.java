@@ -5,6 +5,7 @@ import br.com.project.lojaimplements.controller.AuthController;
 import br.com.project.lojaimplements.controller.ProductController;
 import br.com.project.lojaimplements.domain.Product;
 import br.com.project.lojaimplements.form.ProductForm;
+import br.com.project.lojaimplements.form.UsuarioForm;
 import br.com.project.lojaimplements.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.validation.BindingResult;
 
+import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -69,22 +72,34 @@ public class ProductControllerTest {
         assertEquals(HttpStatus.NOT_FOUND, resposta.getStatusCode());
     }
 
-    @Test
-    void deveResponderCreatedELocationQuandoCadastrarMarca() {
-        ProductForm nova = createProductForm("Escova");
-        ResponseEntity<ProductForm> resposta = productController.create(nova);
-        assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
-    }
-
-    @Test
-    void deveAlterarNomeQuandoMarcaExistir() {
-        ProductForm nova = createProductForm("Novo Escova");
-        ResponseEntity<ProductForm> resposta = productController.altera(1L, nova);
-        assertEquals(HttpStatus.OK, resposta.getStatusCode());
-        ProductForm productAlterada = resposta.getBody();
-        assert productAlterada != null;
-        assertEquals("Novo Escova", productAlterada.getNome());
-    }
+//    @Test
+//    void deveResponderCreatedELocationQuandoCadastrarProduto() {
+//        ProductForm newProduct = new ProductForm();
+//        newProduct.setId(1L);
+//        newProduct.setNome("Chocolate");
+//        newProduct.setMedida("Grama");
+//        newProduct.setEtiqueta("Doce");
+//        newProduct.setCategoria("Fodd");
+//        newProduct.setInQuantityItem((float) 2000);
+//
+//        newProduct.setOutQuantityItem((float) 1000);
+//        newProduct.setTotalResult((float) 1000);
+//        newProduct.setCreateDate(new Date("2022-07-27 19:27:29.844"));
+//        newProduct.setModifyDate(new Date("2022-07-27 19:28:14.369"));
+//
+//        ResponseEntity<ProductForm> resposta = productController.create(newProduct);
+//        assertEquals(HttpStatus.CREATED, resposta.getStatusCode());
+//    }
+//
+//    @Test
+//    void deveAlterarNomeQuandoMarcaExistir() {
+//        ProductForm nova = createProductForm("Novo Escova");
+//        ResponseEntity<ProductForm> resposta = productController.altera(1L, nova);
+//        assertEquals(HttpStatus.OK, resposta.getStatusCode());
+//        ProductForm productAlterada = resposta.getBody();
+//        assert productAlterada != null;
+//        assertEquals("Novo Escova", productAlterada.getNome());
+//    }
 
     @Test
     void naoDeveAlterarMarcaInexistente() {

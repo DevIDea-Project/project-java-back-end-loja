@@ -44,6 +44,8 @@ public class Product {
 
 	private Float outQuantityItem;
 
+	private Integer quantidadeEstoque;
+
 	private Float totalResult;
 
 	@CreationTimestamp
